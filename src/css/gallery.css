@@ -1,0 +1,126 @@
+/* General Styles */
+.gallery-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cylindrical Gallery */
+.cylindrical-track {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+}
+
+.gallery-item {
+    position: absolute;
+    width: 250px;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(255, 77, 0, 0.5);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Gallery Controls */
+.gallery-controls {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem;
+    z-index: 1000;
+}
+
+.control-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background: rgba(255, 77, 0, 0.8);
+    transform: scale(1.1);
+}
+
+/* Image Modal */
+.image-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 800px;
+    max-width: 90%;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 20px;
+    padding: 2rem;
+    z-index: 2000;
+    transition: transform 0.3s ease;
+    visibility: hidden;
+}
+
+.image-modal.active {
+    transform: translate(-50%, -50%) scale(1);
+    visibility: visible;
+}
+
+.modal-content {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: rgba(255, 77, 0, 0.8);
+}
+
+/* Navbar Fix */
+.glass-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}

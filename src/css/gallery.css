@@ -1,7 +1,20 @@
+/* Add body margin reset and background */
+body {
+    margin: 0;
+    padding: 0;
+    background: #0a0a0a;
+}
+
+.glass-nav {
+    width: 80%;
+}
+
 /* General Styles */
 .gallery-container {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
+    padding-top: 100px; /* Account for fixed navbar height */
+    box-sizing: border-box;
     overflow: hidden;
     background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
     display: flex;
@@ -13,12 +26,12 @@
 .cylindrical-track {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 65vh; /* Responsive height */
     display: flex;
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
-    transition: transform 1s ease-in-out;
+    transition: transform 2s ease-in-out;
 }
 
 .gallery-item {
@@ -111,16 +124,73 @@
     color: rgba(255, 77, 0, 0.8);
 }
 
-/* Navbar Fix */
-.glass-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 1rem;
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-brand i {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-btn1 {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+}
+
+.nav-btn.active {
+    /*color: var(--accent);*/
+    /*font-weight: bold;*/
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-btn.cta {
+    background: var(--accent);
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: rgba(255, 77, 0, 0.8);
+}
+
+.nav-btn.cta:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        padding-top: 80px;
+    }
 }

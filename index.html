@@ -1,139 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Virtual Art Gallery | Modern Digital Art</title>
-  <link rel="stylesheet" href="./src/css/main.css" />
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtSphere | Digital Art Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./src/css/navbar.css">
+    <link rel="stylesheet" href="./src/css/main.css">
 </head>
-
 <body>
-  <!-- Navigation -->
-  <nav class="main-nav">
-    <div class="nav-container">
-      <a href="#home" class="logo">
-        <i class="fas fa-palette"></i> ArtSphere
-      </a>
-      <ul class="nav-links">
-        <li>
-          <a href="#home">
-            <i class="fas fa-home"></i>
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="#gallery">
-            <i class="fas fa-images"></i>
-            Gallery
-          </a>
-        </li>
-        <li>
-          <a href="#about">
-            <i class="fas fa-info-circle"></i>
-            About
-          </a>
-        </li>
-        <li>
-          <a href="#contact">
-            <i class="fas fa-envelope"></i>
-            Contact
-          </a>
-        </li>
-      </ul>
-    </div>
-    <a href="#contact" class="cta-button">
-      <i class="fas fa-envelope"></i>
-      Contact Curator
-    </a>
-  </nav>
-
-  <!-- Sections -->
-  <section id="home" class="fullscreen-section">
-    <!-- Hero content -->
-    <div class="hero-content">
-      <h1>Welcome to ArtSphere</h1>
-      <p>Explore the world of modern digital art</p>
-      <a href="#gallery" class="explore-button">
-        <i class="fas fa-arrow-down"></i>
-        Explore Gallery
-      </a>
-    </div>
-  </section>
-
-  <section id="gallery" class="gallery-section">
-    <div class="gallery-grid">
-      <!-- Artwork Card 1 -->
-      <div class="gallery-item">
-        <img src="./src/assets/images/gallery/vangogh.jpg" alt="Modern Abstract Painting" class="artwork-image"
-          data-fullsize="./src/assets/images/gallery/vangogh.jpg" />
-        <div class="artwork-overlay">
-          <h3 class="artwork-title">Starry Night</h3>
-          <p class="artwork-artist">
-            <i class="fas fa-paint-brush"></i>
-            Vincent Van Gogh
-          </p>
+    <nav class="glass-nav">
+        <div class="nav-brand">
+            <i class="fas fa-palette"></i> ArtSphere
         </div>
-      </div>
-      <!-- Repeat for other artworks -->
-    </div>
-  </section>
-
-  <section id="about" class="about-section">
-    <div class="about-container">
-      <h2>About the Gallery</h2>
-      <p>Discover modern art in a virtual space...</p>
-      <a href="./src/assets/resume/resume.pdf" class="resume-link" download>
-        <i class="fas fa-download"></i>
-        Download Curator's Resume
-      </a>
-    </div>
-  </section>
-
-  <section id="contact" class="contact-section">
-    <div class="contact-container">
-      <h2 class="section-title">
-        <i class="fas fa-envelope-open-text"></i>
-        Contact the Curator
-      </h2>
-      <form id="contactForm" class="contact-form">
-        <div class="form-group">
-          <i class="fas fa-user"></i>
-          <input type="text" id="name" name="name" placeholder="Full Name" required />
+        <div class="nav-links">
+            <a href="./index.html" class="nav-btn active">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="./gallery.html" class="nav-btn">
+                <i class="fas fa-images"></i>
+                Gallery
+            </a>
+            <a href="./about.html" class="nav-btn">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a>
+            <a href="./contact.html" class="nav-btn cta">
+                <i class="fas fa-envelope"></i>
+                Contact
+            </a>
         </div>
-        <div class="form-group">
-          <i class="fas fa-envelope"></i>
-          <input type="email" id="email" name="email" placeholder="Email Address" required />
-        </div>
-        <div class="form-group">
-          <i class="fas fa-comment"></i>
-          <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">
-          <span class="btn-text">Send Message</span>
-          <i class="fas fa-paper-plane"></i>
-        </button>
-      </form>
-    </div>
-  </section>
+    </nav>
 
-  <footer>
-    <div class="social-links">
-      <a href="#" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="#" aria-label="Facebook">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="#" aria-label="Twitter">
-        <i class="fab fa-twitter"></i>
-      </a>
-    </div>
-  </footer>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Where Digital Art Comes Alive</h1>
+            <p>Experience cutting-edge digital creations in our immersive virtual gallery</p>
+            <div class="hero-cta">
+                <a href="./gallery.html" class="cta-btn">
+                    Explore Collection
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="./about.html" class="cta-btn secondary">
+                    Learn More
+                    <i class="fas fa-book-open"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <script src="./src/js/app.js"></script>
+    <script src="./src/js/app.js"></script>
 </body>
-
 </html>

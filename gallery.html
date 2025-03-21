@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtSphere | Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./src/css/navbar.css">
+    <link rel="stylesheet" href="./src/css/main.css">
+    <link rel="stylesheet" href="./src/css/gallery.css">
+</head>
+<body>
+    <nav class="glass-nav">
+        <div class="nav-brand">
+            <i class="fas fa-palette"></i> ArtSphere
+        </div>
+        <div class="nav-links">
+            <a href="./index.html" class="nav-btn">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="./gallery.html" class="nav-btn active">
+                <i class="fas fa-images"></i>
+                Gallery
+            </a>
+            <a href="./about.html" class="nav-btn">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a>
+            <a href="./contact.html" class="nav-btn cta">
+                <i class="fas fa-envelope"></i>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <!-- Rotating Sphere Gallery -->
+    <section class="gallery-sphere-container">
+        <div class="sphere">
+            <!-- Sphere Panel 1 -->
+            <div class="sphere-panel">
+                <img src="./src/assets/images/gallery/vangogh.jpg" alt="Starry Night">
+                <div class="artwork-overlay">
+                    <h3>Starry Night</h3>
+                    <p>Vincent Van Gogh</p>
+                </div>
+            </div>
+            
+            <!-- Sphere Panel 2 -->
+            <div class="sphere-panel">
+                <img src="./src/assets/images/gallery/dp.jpg" alt="How About That">
+                <div class="artwork-overlay">
+                    <h3>How About That</h3>
+                    <p>Me</p>
+                </div>
+            </div>
+            
+            <!-- Sphere Panel 3 -->
+            <div class="sphere-panel">
+                <img src="./src/assets/images/gallery/images.jpeg" alt="My College">
+                <div class="artwork-overlay">
+                    <h3>My College</h3>
+                    <p>Rnshit</p>
+                </div>
+            </div>
+            
+            <!-- Add more sphere panels as needed -->
+            <!-- Example template for additional panels:
+            <div class="sphere-panel">
+                <img src="./path/to/image.jpg" alt="Artwork Title">
+                <div class="artwork-overlay">
+                    <h3>Artwork Title</h3>
+                    <p>Artist Name</p>
+                </div>
+            </div>
+            -->
+        </div>
+
+        <!-- Gallery Info -->
+        <div class="gallery-info">
+            <h3>Interactive Digital Sphere</h3>
+            <p>Hover to rotate & click panels to explore</p>
+        </div>
+
+        <!-- Gallery Navigation -->
+        <nav class="gallery-nav">
+            <button class="gallery-nav-btn" onclick="rotateSphere(-60)">
+                <i class="fas fa-chevron-left"></i>
+                Previous
+            </button>
+            <button class="gallery-nav-btn" onclick="rotateSphere(60)">
+                Next
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </nav>
+    </section>
+
+    <script src="./src/js/app.js"></script>
+    <script>
+        // Sphere Rotation Control
+        const sphere = document.querySelector('.sphere');
+        let currentRotation = 0;
+
+        function rotateSphere(degrees) {
+            currentRotation += degrees;
+            sphere.style.transform = `rotateY(${currentRotation}deg) rotateX(10deg)`;
+        }
+
+        // Panel Click Handler
+        document.querySelectorAll('.sphere-panel').forEach(panel => {
+            panel.addEventListener('click', () => {
+                const img = panel.querySelector('img');
+                const overlay = panel.querySelector('.artwork-overlay');
+                
+                // Toggle zoom effect
+                if (panel.classList.contains('zoomed')) {
+                    panel.classList.remove('zoomed');
+                    overlay.style.opacity = '1';
+                } else {
+                    document.querySelectorAll('.sphere-panel').forEach(p => {
+                        p.classList.remove('zoomed');
+                        p.querySelector('.artwork-overlay').style.opacity = '1';
+                    });
+                    panel.classList.add('zoomed');
+                    overlay.style.opacity = '0';
+                }
+            });
+        });
+
+        // Initialize sphere interaction
+        function initSphereInteraction() {
+            let rotateX = 10;
+            let rotateY = 0;
+            
+            if (sphere) {
+                sphere.onmousemove = (e) => {
+                    const rect = sphere.getBoundingClientRect();
+                    const centerX = rect.left + rect.width/2;
+                    const centerY = rect.top + rect.height/2;
+                    
+                    rotateY = currentRotation + (e.clientX - centerX) * 0.1;
+                    rotateX = 10 + (e.clientY - centerY) * 0.05;
+                    
+                    sphere.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                };
+
+                sphere.onmouseleave = () => {
+                    sphere.style.transform = `rotateX(10deg) rotateY(${currentRotation}deg)`;
+                };
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initSphereInteraction();
+        });
+    </script>
+</body>
+</html>

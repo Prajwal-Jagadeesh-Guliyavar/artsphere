@@ -1,71 +1,183 @@
-/* Icon Base Styles */
-i {
-    margin-right: 8px;
-    transition: all 0.3s ease;
-  }
-  
-  /* Navigation Icons */
-  .nav-links i {
-    font-size: 1.2rem;
+:root {
+    --primary-dark: #0f0f0f;
+    --accent: #FF4D00;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --text-light: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(45deg, #0f0f0f, #1a1a1a);
     color: var(--text-light);
-  }
-  
-  .nav-links a:hover i {
-    color: var(--accent-color);
-    transform: translateY(-2px);
-  }
-  
-  /* Contact Form Icons */
-  .form-group {
-    position: relative;
-  }
-  
-  .form-group i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--accent-color);
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    padding-left: 40px;
-  }
-  
-  /* Social Media Icons */
-  .social-links {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    background: radial-gradient(circle at 75% 30%, #2a2a2a 0%, #0f0f0f 100%);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #FF4D00, #FF9F00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-cta {
     display: flex;
     gap: 1.5rem;
-    justify-content: center;
-    padding: 2rem;
-  }
-  
-  .social-links a {
-    color: var(--text-light);
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-  }
-  
-  .social-links a:hover {
-    color: var(--accent-color);
+}
+
+.cta-btn {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    background: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: var(--transition);
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cta-btn:hover {
     transform: translateY(-3px);
-  }
-  
-  /* Download Resume Icon */
-  .resume-link i {
-    margin-right: 10px;
-    animation: bounce 2s infinite;
-  }
-  
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-10px);
-    }
-    60% {
-      transform: translateY(-5px);
-    }
-  }
+    box-shadow: 0 8px 24px rgba(255, 77, 0, 0.3);
+}
+
+/* Gallery Page Styles */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 8rem 5% 4rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.artwork-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+}
+
+/* About Page Styles */
+.about-section {
+    padding: 8rem 5% 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.team-member {
+    background: var(--glass-bg);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+/* Contact Page Styles */
+.contact-section {
+    padding: 8rem 5% 4rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: grid;
+    gap: 1.5rem;
+    background: var(--glass-bg);
+    padding: 2rem;
+    border-radius: 16px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-input {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    padding-left: 3rem;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.form-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+}

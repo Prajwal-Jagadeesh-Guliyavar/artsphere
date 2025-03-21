@@ -1,67 +1,71 @@
-/* Base Styles */
-:root {
-    --primary-color: #2a2a2a;
-    --accent-color: #e74c3c;
-    --text-light: #f4f4f4;
-    --transition-speed: 0.3s;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-    background: var(--primary-color);
+/* Icon Base Styles */
+i {
+    margin-right: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Navigation Icons */
+  .nav-links i {
+    font-size: 1.2rem;
     color: var(--text-light);
-}
-
-/* Navigation Styles */
-.main-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(42, 42, 42, 0.95);
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Gallery Grid System */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.gallery-item {
+  }
+  
+  .nav-links a:hover i {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+  }
+  
+  /* Contact Form Icons */
+  .form-group {
     position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    transition: transform var(--transition-speed);
-}
-
-.gallery-item:hover {
-    transform: translateY(-5px);
-}
-
-/* 3D Perspective Effect */
-.gallery-section {
-    perspective: 1000px;
-}
-
-.gallery-item {
-    transform-style: preserve-3d;
-}
+  }
+  
+  .form-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding-left: 40px;
+  }
+  
+  /* Social Media Icons */
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .social-links a {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+  }
+  
+  /* Download Resume Icon */
+  .resume-link i {
+    margin-right: 10px;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }

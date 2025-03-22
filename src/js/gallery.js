@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentAngle = 0;
     let autoRotate;
 
-    // Sample artwork data
     const artworks = [
         { 
             image: './src/assets/images/gallery/vangogh.jpg', 
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // Create cylindrical gallery items
     artworks.forEach((art, index) => {
         const item = document.createElement('div');
         item.className = 'gallery-item';
@@ -41,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         track.appendChild(item);
     });
 
-    // Cylindrical layout calculations
     function updateLayout() {
         const items = track.children;
         const radius = 400;
@@ -52,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Navigation controls
     function rotateGallery(angle) {
         currentAngle += angle;
         updateLayout();
@@ -61,13 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
     prevBtn.addEventListener('click', () => rotateGallery(360 / artworks.length));
     nextBtn.addEventListener('click', () => rotateGallery(-360 / artworks.length));
 
-    // Auto-rotate function
     function startAutoRotate() {
         autoRotate = setInterval(() => rotateGallery(-360 / artworks.length), 3000);
     }
     startAutoRotate();
 
-    // Modal for cylindrical gallery
     function showModal(art) {
         modal.classList.add('active');
         document.getElementById('modalImage').src = art.image;
@@ -84,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateLayout();
 
-    // Create grid gallery
     function createImageGrid() {
         const gridContainer = document.createElement('div');
         gridContainer.className = 'grid-container';
@@ -102,16 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="image-description">
                         ${art.description}
                     </div>
-                    <span class="more-link" data-full="${art.fullDescription}">More</span>
                 </div>
             `;
+            gridItem.addEventListener('click', () => showFullDescription(art));
             gridContainer.appendChild(gridItem);
         });
 
         document.querySelector('main').appendChild(gridContainer);
     }
 
-    // Full description modal
     const descriptionModal = document.createElement('div');
     descriptionModal.className = 'full-description-modal';
     descriptionModal.innerHTML = `
@@ -120,31 +112,28 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.body.appendChild(descriptionModal);
 
-    // Event listeners for grid gallery
+    function showFullDescription(art) {
+        descriptionModal.querySelector('.modal-content').innerHTML = `
+            <img class="modal-image" src="${art.image}" alt="${art.title}">
+            <div class="modal-text">
+                <h2>${art.title}</h2>
+                <p class="artist">By ${art.artist}</p>
+                <p>${art.fullDescription}</p>
+            </div>
+        `;
+        descriptionModal.classList.add('active');
+    }
+
     document.addEventListener('click', (e) => {
-        // More link functionality
-        if (e.target.classList.contains('more-link')) {
-            const fullText = e.target.dataset.full;
-            descriptionModal.querySelector('.modal-content').innerHTML = `
-                <h2>${e.target.previousElementSibling.previousElementSibling.textContent}</h2>
-                <p>${fullText}</p>
-            `;
-            descriptionModal.classList.add('active');
-        }
-        
-        // Close modal
         if (e.target.classList.contains('modal-close') || e.target === descriptionModal) {
             descriptionModal.classList.remove('active');
         }
 
-        // Like button functionality
         if (e.target.closest('.like-btn')) {
             const btn = e.target.closest('.like-btn');
             btn.classList.toggle('liked');
-            // Add database logic later
         }
     });
 
-    // Initialize both galleries
     createImageGrid();
 });

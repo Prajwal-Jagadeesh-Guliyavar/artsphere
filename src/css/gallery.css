@@ -1,3 +1,4 @@
+/* Add body margin reset and background */
 body {
     margin: 0;
     padding: 0;
@@ -8,10 +9,11 @@ body {
     width: 80%;
 }
 
+/* General Styles */
 .gallery-container {
     position: relative;
     min-height: 100vh;
-    padding-top: 100px; 
+    padding-top: 100px; /* Account for fixed navbar height */
     box-sizing: border-box;
     overflow: hidden;
     background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
@@ -20,10 +22,11 @@ body {
     justify-content: center;
 }
 
+/* Cylindrical Gallery */
 .cylindrical-track {
     position: absolute;
     width: 100%;
-    height: 65vh; 
+    height: 65vh; /* Responsive height */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,6 +58,7 @@ body {
     object-fit: cover;
 }
 
+/* Gallery Controls */
 .gallery-controls {
     position: absolute;
     bottom: 70%;
@@ -81,6 +85,7 @@ body {
     transform: scale(1.1);
 }
 
+/* Image Modal */
 .image-modal {
     position: fixed;
     top: 50%;
@@ -169,6 +174,8 @@ body {
 }
 
 .nav-btn.active {
+    /*color: var(--accent);*/
+    /*font-weight: bold;*/
     font-family: 'Inter', sans-serif;
 }
 
@@ -190,6 +197,7 @@ body {
     }
 }
 
+/* Grid Gallery Styles */
 .gallery-grid {
     width: 100%;
     padding: 4rem 5%;
@@ -328,6 +336,7 @@ body {
     color: #ff4d00;
 }
 
+/* Full Description Modal */
 .full-description-modal {
     position: fixed;
     top: 50%;
@@ -341,7 +350,7 @@ body {
     z-index: 3000;
     display: none;
     font-family: 'Inter', sans-serif;
-    color: #282119;
+    color: #fbfaf9;
 }
 
 .full-description-modal.active {
@@ -357,7 +366,13 @@ body {
 
 .full-description-modal h2{
     text-decoration: underline;
+    color: rgb(126, 251, 2);
     font-weight: bold;
+    text-shadow: 
+        -1px -1px 0 rgb(32, 147, 6),
+         1px -1px 0 rgb(32, 147, 6),
+        -1px  1px 0 rgb(32, 147, 6),
+         1px  1px 0 rgb(32, 147, 6);
 }
 
 .modal-close {
@@ -392,4 +407,38 @@ body {
 
 .image-overlay {
     background:none
+}
+
+/* Ensure like button is visible and clickable */
+.like-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10; /* Ensure it's above other elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.like-btn:hover {
+    background: rgba(255, 77, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.like-btn.liked {
+    color: #fa0c0c;
+}
+
+/* Prevent like button from being covered by other elements */
+.grid-item {
+    position: relative;
+    overflow: visible; /* Ensure like button is not clipped */
 }

@@ -7,30 +7,32 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentAngle = 0;
     let autoRotate;
 
+    // Sample artwork data
     const artworks = [
         { 
             image: './src/assets/images/gallery/vangogh.jpg', 
             title: 'Starry Night', 
             artist: 'Vincent Van Gogh',
-            description: 'A masterpiece of post-impressionism featuring swirling skies over a quiet town. The painting demonstrates Van Gogh\'s unique brushwork and emotional intensity...',
+            description: 'A masterpiece of post-impressionism featuring swirling skies over a quiet town. The painting demonstrates Van Gogh\'s unique brushwork and emotional intensity........',
             fullDescription: 'A masterpiece of post-impressionism featuring swirling skies over a quiet town. The painting demonstrates Van Gogh\'s unique brushwork and emotional intensity. Created in 1889, this work is considered one of his finest achievements and resides in the Museum of Modern Art in New York.'
         },
         { 
-            image: './src/assets/images/gallery/dp.jpg', 
-            title: 'Modern Abstract', 
-            artist: 'Digital Artist',
-            description: 'A vibrant digital artwork showcasing bold colors and geometric shapes. This piece represents the fusion of traditional art with modern technology...',
-            fullDescription: 'A vibrant digital artwork showcasing bold colors and geometric shapes. This piece represents the fusion of traditional art with modern technology. Created using advanced digital tools, it explores the relationship between form and color in the digital age.'
+            image: './src/assets/images/gallery/digart1.jpeg', 
+            title: 'Modern tradition', 
+            artist: 'me',
+            description: 'A vibrant digital artwork showcasing bold colors and geometric shapes. This piece represents the fusion of traditional art with modern technology........',
+            fullDescription: 'A vibrant digital artwork showcasing bold colors and geometric shapes. This piece represents the fusion of traditional art with modern technology. Created using advanced digital tools, it explores the relationship between form and color in the digital age. with an excellent display of ones creativity and imagination'
         },
         { 
-            image: './src/assets/images/gallery/images.jpeg', 
-            title: 'Urban Landscape', 
-            artist: 'Street Photographer',
-            description: 'A captivating photograph of a bustling cityscape at night. The image captures the energy and movement of urban life...',
-            fullDescription: 'A captivating photograph of a bustling cityscape at night. The image captures the energy and movement of urban life. Taken with a long exposure, the lights of the city create a mesmerizing effect, highlighting the contrast between stillness and motion.'
+            image: './src/assets/images/gallery/digart2.jpeg', 
+            title: 'The High Elf', 
+            artist: 'me',
+            description: 'a creation of an elven lady of the rose woods........',
+            fullDescription: 'A captivating creation of a fine high elf female with mesmerising eyes, and the silky gold hairs with the vibrant colors flowing on them like a fall of divinity, makes it a truly worthy sight to behold of.'
         }
     ];
 
+    // Create cylindrical gallery items
     artworks.forEach((art, index) => {
         const item = document.createElement('div');
         item.className = 'gallery-item';
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         track.appendChild(item);
     });
 
+    // Cylindrical layout calculations
     function updateLayout() {
         const items = track.children;
         const radius = 400;
@@ -49,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Navigation controls
     function rotateGallery(angle) {
         currentAngle += angle;
         updateLayout();
@@ -57,11 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
     prevBtn.addEventListener('click', () => rotateGallery(360 / artworks.length));
     nextBtn.addEventListener('click', () => rotateGallery(-360 / artworks.length));
 
+    // Auto-rotate function
     function startAutoRotate() {
         autoRotate = setInterval(() => rotateGallery(-360 / artworks.length), 3000);
     }
     startAutoRotate();
 
+    // Modal for cylindrical gallery
     function showModal(art) {
         modal.classList.add('active');
         document.getElementById('modalImage').src = art.image;
@@ -78,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateLayout();
 
+    // Create grid gallery
     function createImageGrid() {
         const gridContainer = document.createElement('div');
         gridContainer.className = 'grid-container';
@@ -104,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('main').appendChild(gridContainer);
     }
 
+    // Full description modal
     const descriptionModal = document.createElement('div');
     descriptionModal.className = 'full-description-modal';
     descriptionModal.innerHTML = `
@@ -112,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.body.appendChild(descriptionModal);
 
+    // Show full description with image
     function showFullDescription(art) {
         descriptionModal.querySelector('.modal-content').innerHTML = `
             <img class="modal-image" src="${art.image}" alt="${art.title}">
@@ -124,16 +133,21 @@ document.addEventListener('DOMContentLoaded', () => {
         descriptionModal.classList.add('active');
     }
 
+    // Event listeners for grid gallery
     document.addEventListener('click', (e) => {
+        // Close modal
         if (e.target.classList.contains('modal-close') || e.target === descriptionModal) {
             descriptionModal.classList.remove('active');
         }
 
+        // Like button functionality
         if (e.target.closest('.like-btn')) {
             const btn = e.target.closest('.like-btn');
             btn.classList.toggle('liked');
+            // Add database logic later
         }
     });
 
+    // Initialize both galleries
     createImageGrid();
 });

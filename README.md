@@ -9,34 +9,35 @@ The **Virtual Art Gallery** is a simple static site designed to display digital 
 The project is organized as follows:
 
 artsphere
-├── about.html
-├── contact.html
-├── gallery.html
-├── index.html
-├── package-lock.json
-├── README.md
-└── src
-    ├── assets
-    │   ├── icons
-    │   │   ├── bars.svg
-    │   │   ├── creativity-svgrepo-com.svg
-    │   │   ├── download.svg
-    │   │   ├── menu.svg
-    │   │   ├── search.svg
-    │   │   └── set-up-svgrepo-com.svg
-    │   ├── images
-    │   │   └── gallery
-    │   └── resume
-    ├── css
-    │   ├── about.css
-    │   ├── contact.css
-    │   ├── gallery.css
-    │   ├── main.css
-    │   └── navbar.css
-    ├── js
-    │   ├── app.js
-    │   └── gallery.js
-    └── pages
+- about.html
+- contact.html
+- gallery.html
+- index.html
+- package-lock.json
+- README.md
+- src/
+  - assets/
+    - icons/
+      - bars.svg
+      - creativity-svgrepo-com.svg
+      - download.svg
+      - menu.svg
+      - search.svg
+      - set-up-svgrepo-com.svg
+    - images/
+      - gallery/
+    - resume/
+  - css/
+    - about.css
+    - contact.css
+    - gallery.css
+    - main.css
+    - navbar.css
+  - js/
+    - app.js
+    - gallery.js
+  - pages/
+
 
 
 
